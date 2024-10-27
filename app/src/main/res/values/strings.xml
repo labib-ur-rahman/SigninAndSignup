@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Login And Signup</string>
+    <!-- TODO: Remove or change this placeholder text -->
+
+
+
+    <!-- ================================================================================================== -->
+    <!--                                           LOGIN & SIGNUP                                           -->
+    <!-- ================================================================================================== -->
+
+    <string name="welcome">Welcome,</string>
+    <string name="glad_to_see_you">Glad to see you!</string>
+    <string name="email_address">Email Address</string>
+    <string name="password">Password</string>
+
+</resources>

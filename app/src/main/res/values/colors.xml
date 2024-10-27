@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--                       Extra
+    _________________________________________________________________________________________________________-->
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FFC107</color>
+    <color name="purple_700">#FF9800</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+
+    <!-- Neumorphism color -->
+
+    <color name="text_color">#1E4175</color>
+    <color name="background_color">#ecf0f3</color>
+    <color name="highlight">#ffffff</color>
+    <color name="shadow_color">#d9dbde</color>
+
+    <!-- Default -->
+    <color name="web_top">#FF9800</color>
+    <color name="lavender">#8692f7</color>
+
+
+    <!--    <color name="text_color">#000000</color>-->
+    <!--    <color name="background_color">#673AB7</color>-->
+    <color name="background">#F3E4BA</color>
+    <color name="shadow_color_top">#EFD079</color>
+    <color name="shadow_color_bottom">#F6F4F1</color>
+    <color name="shadow_home_top">#406D6D6D</color>
+    <color name="shadow_home_bottom">#102340</color>
+    <color name="slider_title_background">#40000000</color>
+    <color name="thankYou_title">#FF9800</color>
+    <color name="thankYou_des">#9E9393</color>
+
+    <!-- TODO: Bottom Nav Bar color -->
+    <color name="home">#1194AA</color>
+    <color name="book">#8692f7</color>
+    <color name="video">#AE7E0F</color>
+    <color name="explore">#C9379D</color>
+    <color name="profile">#5B37B7</color>
+
+    <color name="home_20">#331194AA</color>
+    <color name="book_20">#338692F7</color>
+    <color name="video_20">#33AE7E0F</color>
+    <color name="explore_20">#33C9379D</color>
+    <color name="profile_20">#335B37B7</color>
+
+    <color name="cat_name">#0020bf</color>
+
+    <!-- TODO: Gradient Text color -->
+    <color name="g1">#A64DFF</color>
+    <color name="g2">#57ADFF</color>
+    <color name="g3">#2DFF00</color>
+    <color name="g4">#EEFF00</color>
+    <color name="g5">#00FFFF</color>
+    <color name="g6">#FFFFFF</color>
+
+    <color name="violet">#790CE6</color>
+    <color name="darkViolet">#5B11A6</color>
+    <color name="blue">#0B82F3</color>
+    <color name="green">#39E813</color>
+    <color name="darkGreen">#0D8811</color>
+    <color name="yellow">#E3F30D</color>
+    <color name="orange">#EF7E09</color>
+    <color name="red">#F10F0B</color>
+
+    <!-- SMART ~ Gradient Text color -->
+    <color name="clr1">#AC00CF</color>
+    <color name="clr2">#1499FF</color>
+
+    <!-- E ~ Gradient Text color -->
+    <color name="clr1.1">#E3F30D</color>
+    <color name="clr2.1">#E91E63</color>
+
+    <!-- ENGINEER ~ Gradient Text color -->
+    <color name="clr2.1.1">#FF9800</color>
+    <color name="clr2.1.2">#E91E63</color>
+    <color name="clr2.1.3">#AC00CF</color>
+
+
+    <!-- DEPARTMENTS Gradient Text color -->
+    <color name="deepPink">#f3254f</color>
+    <color name="lightYellow">#fda04d</color>
+
+    <!-- TODO: Department Gradient Text color -->
+    <color name="lightDeepBlue">#154BAC</color>
+    <color name="midBlue">#0079b3</color>
+    <color name="simpleBlue">#88eafa</color>
+
+    <!-- TODO: SoftyLur Gradient Text color -->
+    <color name="deepBlue">#0003DD</color>
+    <color name="lightYRed">#E91E63</color>
+
+</resources>

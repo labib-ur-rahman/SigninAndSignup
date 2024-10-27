@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- ================================================================================================== -->
+    <!--                                            Additional COLOR                                            -->
+    <!-- ================================================================================================== -->
+
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+
+    <color name="transparent">#00000000</color>
+    <color name="red__mix">#FF3131</color>
+    <color name="red__dark">#FF0000</color>
+    <color name="white__mix">#FBFBFB</color>
+    <color name="white__dark">#EDEEEF</color>
+
+    <!-- Google Color -->
+    <color name="google__Red">#E94235</color>
+    <color name="google__Yellow">#FBBC04</color>
+    <color name="google__Green">#34A853</color>
+    <color name="google__Blue">#4285F4</color>
+
+    <!-- ================================================================================================== -->
+    <!--                                       CUSTOM COLOR => LIGHT                                        -->
+    <!-- ================================================================================================== -->
+
+    <!-- Login or Signup Button -->
+    <color name="googleContinue__Bg">#FFFFFF</color>
+    <color name="googleContinue__Text">#1F1F1F</color>
+    <color name="BtnGradientBlue__Dark">#8AA2FF</color>
+    <color name="BtnGradientBlue__Light">#A3F6FF</color>
+
+    <!-- Left Side Bar Color -->
+    <color name="sideBar_Bg">#FFFFFFFF</color>
+    <color name="sideBar_ActiveBtnBg">#f4f4f4</color>
+    <color name="sideBar_ActiveBtn">#242424</color>
+    <color name="sideBar_InactiveBtn">#656565</color>
+
+    <!-- Main Container_bg Color -->
+    <color name="mainContainer_Bg">#f4f4f4</color>
+    <color name="mainContainer_Active">#FFFFFFFF</color>
+    <color name="mainContainer_HeadingText">#222222</color>
+    <color name="mainContainer_SubHeadingText">#545454</color>
+
+    <!-- For Unique Style -->
+    <color name="underlineText">#E3F30D</color>
+
+</resources>
