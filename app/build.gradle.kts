@@ -46,9 +46,18 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.preference)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    // Import the Firebase BoM Dependencies
+    implementation(platform(libs.firebase.bom)) // Firebase BOM
+    implementation(libs.google.firebase.auth) // Firebase Authentication
+    implementation(libs.google.firebase.database) // Firebase Database
+    implementation(libs.firebase.firestore) // Firebase FireStore
+    implementation(libs.firebase.analytics) // Firebase Analytics
+    implementation(libs.firebase.storage) // Firebase Storage
 
     //implementation(libs.blurView)
     implementation ("com.github.Dimezis:BlurView:version-2.0.5") // BlurView for GlassMorphism

@@ -35,6 +35,7 @@
     <color name="sideBar_ActiveBtnBg">#f4f4f4</color>
     <color name="sideBar_ActiveBtn">#242424</color>
     <color name="sideBar_InactiveBtn">#656565</color>
+    <color name="sideBar_iconTint">#8692f7</color>
 
     <!-- Main Container_bg Color -->
     <color name="mainContainer_Bg">#f4f4f4</color>
@@ -44,5 +45,6 @@
 
     <!-- For Unique Style -->
     <color name="underlineText">#E3F30D</color>
+    <color name="ic_light">#1C274C</color>
 
 </resources>

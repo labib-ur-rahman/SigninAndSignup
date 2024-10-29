@@ -85,10 +85,15 @@
     <!-- SideBarWidth Positive and Negative -->
     <dimen name="size_sidebar_width">112dp</dimen>
     <dimen name="size_sidebar_pic">80dp</dimen>
+    <dimen name="size_sidebar_margin">32dp</dimen>
+    <dimen name="size_sidebar_padding">12dp</dimen>
+    <dimen name="size_sidebar_icon_size">53dp</dimen>
 
     <!-- Text Sizes Positive and Negative -->
-    <dimen name="text_size_small">12sp</dimen>
-    <dimen name="text_size_small_neg">-12sp</dimen>
+    <dimen name="text_size_x_small">12sp</dimen>
+    <dimen name="text_size_x_small_neg">-12sp</dimen>
+    <dimen name="text_size_small">14sp</dimen>
+    <dimen name="text_size_small_neg">-14sp</dimen>
     <dimen name="text_size_medium">16sp</dimen>
     <dimen name="text_size_medium_neg">-16sp</dimen>
     <dimen name="text_size_large">18sp</dimen>
