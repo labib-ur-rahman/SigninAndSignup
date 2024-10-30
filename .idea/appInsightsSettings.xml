@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.microsl.loginsignup" />
+                  <option name="mobileSdkAppId" value="1:1044301242040:android:87e2bc44582d5aef135e4d" />
+                  <option name="projectId" value="login-and-signup-widget" />
+                  <option name="projectNumber" value="1044301242040" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

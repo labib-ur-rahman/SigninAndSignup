@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1044301242040",
+    "project_id": "login-and-signup-widget",
+    "storage_bucket": "login-and-signup-widget.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1044301242040:android:87e2bc44582d5aef135e4d",
+        "android_client_info": {
+          "package_name": "com.microsl.loginsignup"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCS07MLiVH5qvxEQrt0JxlcvRGiSNoPlBE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

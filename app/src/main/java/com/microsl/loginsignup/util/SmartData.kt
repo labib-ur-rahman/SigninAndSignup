@@ -1,5 +1,9 @@
 package com.microsl.loginsignup.util
 
+import android.content.Context
+import androidx.fragment.app.Fragment
+import com.microsl.loginsignup.R
+
 class SmartData {
     companion object {
         // Dark Mode Theme
