@@ -11,24 +11,30 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import com.microsl.loginsignup.util.AuthRepository
 import com.microsl.loginsignup.R
 import com.microsl.loginsignup.Users
-import com.microsl.loginsignup.databinding.ActivityMainBinding
 import com.microsl.loginsignup.databinding.FragmentSignupBinding
 import com.microsl.loginsignup.databinding.LayoutSidebarBinding
+import com.microsl.loginsignup.util.GoogleAuthClient
 import com.microsl.loginsignup.util.SmartData
+import kotlinx.coroutines.launch
 
 class SignupFragment : Fragment() {
 
     private lateinit var binding: FragmentSignupBinding
-    private lateinit var auth: FirebaseAuth
-    private lateinit var database: FirebaseDatabase
     private var tagLog = "SignupFragment"
     private lateinit var sidebarBinding: LayoutSidebarBinding
     private lateinit var layoutInflater: LayoutInflater
+
+    private lateinit var database: FirebaseDatabase
+    private lateinit var auth: FirebaseAuth
+    private lateinit var authRepository: AuthRepository
+    private lateinit var googleAuthClient: GoogleAuthClient
 
     // Dark Mode
     private lateinit var sharedPreferences: SharedPreferences
@@ -42,6 +48,12 @@ class SignupFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentSignupBinding.inflate(inflater, container, false)
 
+        // Initialize Firebase Auth and Firebase Database
+        auth = FirebaseAuth.getInstance()
+        database = FirebaseDatabase.getInstance()
+        authRepository = AuthRepository()
+        googleAuthClient = GoogleAuthClient(requireActivity())
+
         // Called the sidebar functionality
         sideBarLayout()
 
@@ -49,47 +61,37 @@ class SignupFragment : Fragment() {
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance()
 
-        binding.signupButton.setOnClickListener {
-            val user = binding.signupName.text.toString().trim()
-            val email = binding.signupEmail.text.toString().trim()
-            val pass = binding.signupPassword.text.toString().trim()
+        binding.apply {
+            signupButton.setOnClickListener {
+                val user = signupName.text.toString().trim()
+                val email = signupEmail.text.toString().trim()
+                val pass = signupPassword.text.toString().trim()
 
-            //val userUid = currentUser.uid
-            val rootRef = FirebaseDatabase.getInstance().getReference()
-            val usersRef = rootRef.child("users")
-
-            if (user.isEmpty()) binding.signupName.error = "Name cannot be empty"
-            if (email.isEmpty()) binding.signupEmail.error = "Email cannot be empty"
-            if (pass.isEmpty()) binding.signupPassword.error = "Password cannot be empty"
-            else {
-                auth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        // Sign in success, update UI with the signed-in user's information
-                        val userInfo = Users(
-                            binding.signupName.text.toString(),
-                            binding.signupEmail.text.toString(),
-                            binding.signupPassword.text.toString()
-                        )
-                        val id = task.result.user!!.uid
-                        database.reference.child("Users").child(id).setValue(userInfo)
-
-                        Toast.makeText(context,"SignUp Successful",Toast.LENGTH_SHORT).show()
-                        it.findNavController().navigate(R.id.action_signupFragment_to_loginFragment)
-                    } else {
-                        Toast.makeText(context, "SignUp Failed ${task.exception!!.message}",Toast.LENGTH_LONG).show()
+                if (user.isEmpty() && email.isEmpty() && pass.isEmpty()) {
+                    signupName.error = "Name cannot be empty"
+                    signupEmail.error = "Email cannot be empty"
+                    signupPassword.error = "Password cannot be empty"
+                } else {
+                    lifecycleScope.launch {
+                        val isSignupSuccess = authRepository.register(user, email, pass)
+                        if (isSignupSuccess){
+                            Toast.makeText(context,"SignUp Successful",Toast.LENGTH_SHORT).show()
+                            requireActivity().supportFragmentManager.beginTransaction().replace(R.id.navHostFragmentContainerView, LoginFragment()).commit()
+                        } else {
+                            Toast.makeText(context, "SignUp Failed", Toast.LENGTH_SHORT).show()
+                        }
                     }
                 }
             }
-        }
 
-        binding.btnLogin.setOnClickListener {
-            val bind= ActivityMainBinding.inflate(inflater, container, false)
-            try {
-                Log.d(tagLog, "Fragment replaced via NavHostController")
-                it.findNavController().navigate(R.id.action_signupFragment_to_loginFragment)
-            } catch (e: Exception) {
-                Log.d(tagLog, "Fragment replaced via FragmentTransaction ${e.message}")
-                requireActivity().supportFragmentManager.beginTransaction().replace(R.id.navHostFragmentContainerView, LoginFragment()).commit()
+            btnLogin.setOnClickListener {
+                try {
+                    Log.d(tagLog, "Fragment replaced via NavHostController")
+                    it.findNavController().navigate(R.id.action_signupFragment_to_loginFragment)
+                } catch (e: Exception) {
+                    Log.d(tagLog, "Fragment replaced via FragmentTransaction")
+                    requireActivity().supportFragmentManager.beginTransaction().replace(R.id.navHostFragmentContainerView, LoginFragment()).commit()
+                }
             }
         }
 
@@ -115,13 +117,38 @@ class SignupFragment : Fragment() {
             // Set Selected Button and deactivate buttons styles
             sideBarBtnSignUp.setBackgroundResource(R.drawable.sl_button_selected)
             sideBarBtnLogin.setBackgroundResource(R.color.sideBar_Bg)
-            sideBarBtnGoogle.setBackgroundResource(R.color.sideBar_Bg)
-            sideBarBtnFacebook.setBackgroundResource(R.color.sideBar_Bg)
+            //sideBarBtnGoogle.setBackgroundResource(R.color.sideBar_Bg)
+            //sideBarBtnFacebook.setBackgroundResource(R.color.sideBar_Bg)
             sideBarTitle.text = resources.getString(R.string.signup)
 
             // Set click listeners for the sidebar buttons
             sideBarBtnLogin.setOnClickListener { fragmentSwitch(LoginFragment()) }
             sideBarBtnSignUp.setOnClickListener { fragmentSwitch(SignupFragment()) }
+            sideBarBtnGoogle.setOnClickListener {
+                lifecycleScope.launch {
+                    val isSignIn = googleAuthClient.signIn(false)
+                    if (isSignIn) {
+                        val id = auth.currentUser?.uid
+                        val name = auth.currentUser?.displayName
+                        val email = auth.currentUser?.email
+                        val image = auth.currentUser?.photoUrl.toString()
+
+                        Toast.makeText(context, "SignIn Successfully", Toast.LENGTH_SHORT).show()
+
+                        val userInfo = Users(id, name, image, email)
+                        // Profile update kora hole o sob change hoa jay ata thik kora lagbe pore ============================= TODO =================================
+                        id?.let { it1 -> database.reference.child("Users").child(it1).setValue(userInfo) }
+                    } else {
+                        Toast.makeText(context, "SignIn Failed", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+            sideBarBtnFacebook.setOnClickListener {
+                lifecycleScope.launch {
+                    googleAuthClient.signOut()
+                    Toast.makeText(context, "SignOut", Toast.LENGTH_SHORT).show()
+                }
+            }
             sideBarBtnSettings.setOnClickListener {
                 if (isNightMode as Boolean) {
                     editor.putBoolean(SmartData.SWITCH_BUTTON_KEY, true).apply()

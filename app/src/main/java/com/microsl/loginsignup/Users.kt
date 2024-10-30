@@ -1,11 +1,10 @@
 package com.microsl.loginsignup
 
-class Users {
+class Users{
     var userId: String? = null
     var name: String? = null
-    var profile: String? = null
+    var picture: String? = null
     var email: String? = null
-    var password: String? = null
     var semester: String? = null
     var department: String? = null
     var institute: String? = null
@@ -16,9 +15,8 @@ class Users {
     constructor(
         userId: String?,
         name: String?,
-        profile: String?,
+        picture: String?,
         email: String?,
-        password: String?,
         semester: String?,
         department: String?,
         institute: String?,
@@ -26,9 +24,8 @@ class Users {
     ) {
         this.userId = userId
         this.name = name
-        this.profile = profile
+        this.picture = picture
         this.email = email
-        this.password = password
         this.semester = semester
         this.department = department
         this.institute = institute
@@ -36,10 +33,23 @@ class Users {
     }
 
     // Signup Constructor
-    constructor(name: String?, email: String?, password: String?) {
+    constructor(userId: String?, name: String?, email: String?) {
+        this.userId = userId
         this.name = name
         this.email = email
-        this.password = password
+    }
+
+    // Google SignIn Constructor
+    constructor(
+        userId: String?,
+        name: String?,
+        picture: String?,
+        email: String?
+    ) {
+        this.userId = userId
+        this.name = name
+        this.picture = picture
+        this.email = email
     }
 
 }
